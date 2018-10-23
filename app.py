@@ -1,10 +1,11 @@
-from flask import Flask, request, render_template, redirect, url_for
+from flask import Flask, request, render_template, redirect, url_for, flash
 import RPi.GPIO as GPIO
 import time
 
 channel = 21
 
 app = Flask(__name__)
+app.secret_key = b'74b2055bf813a37c67d7c018f2ae91ce'
 
 def buzz_in():
     print("Fake buzz!")
@@ -29,6 +30,7 @@ def index():
 def open_sesame():
     if request.method == 'POST':
         buzz_in();
+        flash("Enterrrr.")
         return redirect(url_for('open_sesame'))
     else:
         return render_template('open-sesame.html')
