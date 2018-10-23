@@ -8,9 +8,6 @@ app = Flask(__name__)
 app.secret_key = b'74b2055bf813a37c67d7c018f2ae91ce'
 
 def buzz_in():
-    print("Fake buzz!")
-
-def buzz_in_old():
     try:
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(channel, GPIO.OUT)
