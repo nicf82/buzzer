@@ -16,13 +16,17 @@
       {% if messages %}
         {% for message in messages %}
           <div class="alert alert-info" role="alert">
-            Enterrrrrrr.
+              {{ message }}
           </div>
         {% endfor %}
       {% endif %}
     {% endwith %}
 
     <h1 class="h3 mb-3 font-weight-normal">Welcome</h1>
+
+    <div class="form-group">
+      <input type="text" name="password">
+    </div>
 
     <button class="btn btn-lg btn-primary btn-block" type="submit">Open Up!</button>
 

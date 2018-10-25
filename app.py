@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template, redirect, url_for, flash
 import RPi.GPIO as GPIO
 import time
+import os
 
 channel = 21
 
@@ -23,11 +24,15 @@ def index():
     return "Hello"
 
 
-@app.route('/open-sesame/7895327894', methods=['POST', 'GET'])
+@app.route('/open-sesame', methods=['POST', 'GET'])
 def open_sesame():
     if request.method == 'POST':
-        buzz_in();
-        flash("Enterrrr.")
-        return redirect(url_for('open_sesame'))
+        if request.form['password'].lower() == os.getenv('PASSWORD', 'open sesame').lower():
+            buzz_in()
+            flash("Enterrrr.")
+            return redirect(url_for('open_sesame'))
+        else:
+            flash("Bad password.")
+            return redirect(url_for('open_sesame'))
     else:
         return render_template('open-sesame.html')
