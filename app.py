@@ -13,7 +13,7 @@ def buzz_in():
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(channel, GPIO.OUT)
         GPIO.output(channel, GPIO.HIGH)
-        time.sleep(1)
+        time.sleep(2)
         GPIO.output(channel, GPIO.LOW)
         GPIO.cleanup()
     except KeyboardInterrupt:
